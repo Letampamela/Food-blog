@@ -1,0 +1,23 @@
+﻿@using BlogEngine.Models
+@{
+    ViewBag.Title = "Generic";
+}
+
+@using (var ctx = new ApplicationDbContext())
+{
+    var blog = ctx.blogs.Find(Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]));
+
+    <h1 class="text-center">
+        @blog.Title
+    </h1>
+    
+    <h6 class=" text-center">
+        Author | @blog.Author
+    </h6>
+    
+    <div class="container">
+        @blog.Comment
+    </div>
+}
+
+
